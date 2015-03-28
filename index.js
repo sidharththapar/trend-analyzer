@@ -4,7 +4,8 @@ var router = require( "./router" );
 var handle = {
     "sink" : "./datacontroller/AppController",
     "source" : "./datasource/AppController",
-    "default" : "./RequestController"
+    "default" : "./RequestController",
+    "approach" : "./RequestController"
 };
 
 server.start( router.route, handle );
