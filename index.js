@@ -5,8 +5,10 @@ var handle = {
     "sink" : "./datacontroller/AppController",
     "source" : "./datasource/AppController",
     "default" : "./RequestController",
-    "approach" : "./RequestController"
+    "approach" : "./RequestController",
+    "static" : "./RequestController"
 };
 
 server.start( router.route, handle );
 exports.handle = handle;
+exports.staticDirectory = __dirname + '/static/';
