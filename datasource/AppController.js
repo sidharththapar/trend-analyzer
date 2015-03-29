@@ -62,9 +62,12 @@ function changeDataRate( segments, response, postData ) {
     if ( postData ) {
 	var parsedData  = querystring.parse( postData );
 	GLOBAL.datasourceInterval.changeDataRate( parsedData[ 'dataRate' ] );
+
     }
     else {
     }
+    response.end();
+
 }
 
 exports.getDataSourceList = getDataSourceList;

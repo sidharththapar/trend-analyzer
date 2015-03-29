@@ -33,5 +33,48 @@ function setCron( options ) {
 
 }
 
+
+function route ( segments, response, postData ) {
+    switch( segments[ 2 ] ) {
+	case "constants" :
+	    changeConstants( segments, response, postData );
+	    break;
+    }
+}
+function changeConstants( segments, response, postData ) {
+    if( postData ) {
+
+	var postData = querystring.parse( postData );
+	var dataSource = dataSources[ sourceName ];
+	dataSource.changeConstants( postData[ 'constants' ] );
+
+    }
+    else {
+    }
+}
+
+function route ( segments, response, postData ) {
+    switch( segments[ 2 ] ) {
+	case "constants" :
+	    changeConstants( segments, response, postData );
+	    break;
+    }
+}
+
+function changeConstants( segments, response, postData ) {
+    if( postData ) {
+
+	var parsedData = querystring.parse( postData );
+	var approach = approaches[ approachName ];
+	approach.changeConstants( parsedData[ 'constants' ] );
+
+    }
+    else {
+    }
+    response.end();
+
+}
+
 exports.getApproachList = getApproachList;
 exports.setCron = setCron;
+exports.route = route;

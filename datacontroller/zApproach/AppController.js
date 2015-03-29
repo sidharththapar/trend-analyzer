@@ -45,4 +45,8 @@ function updateZValues( options ) {
     });
 }
 
+function changeConstants( options ) {
+}
+
 exports.updateScores = updateScores;
+exports.changeConstants = changeConstants;
