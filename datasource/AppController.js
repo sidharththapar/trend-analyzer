@@ -50,5 +50,23 @@ function throwData( options ) {
 
 }
 
+function route ( segments, response, postData ) {
+    switch( segments[ 2 ] ) {
+	case "data_rate" :
+	    changeDataRate( segments, response, postData );
+	    break;
+    }
+}
+
+function changeDataRate( segments, response, postData ) {
+    if ( postData ) {
+	var parsedData  = querystring.parse( postData );
+	GLOBAL.datasourceInterval.changeDataRate( parsedData[ 'dataRate' ] );
+    }
+    else {
+    }
+}
+
 exports.getDataSourceList = getDataSourceList;
 exports.initDataSource = initDataSource;
+exports.route = route;
