@@ -48,5 +48,10 @@ function updateZValues( options ) {
 function changeConstants( options ) {
 }
 
+function handleData( options ) {
+    zModel.storeData( options );
+}
+
 exports.updateScores = updateScores;
 exports.changeConstants = changeConstants;
+exports.handleData = handleData;
