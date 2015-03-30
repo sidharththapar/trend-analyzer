@@ -19,4 +19,14 @@ var fetch = function( options ){
     } );
 }
 
+var fetchTrend = function( options ) {
+    var trends = options[ 'trends' ];
+    trends.groundTruth = {
+	'tags' : [ 'data', 's', 'sa', 'dsd' ],
+	'time' : new Date().getTime() - options[ 'requestTime' ]
+    };
+    options[ 'callback' ]( { 'trends' : trends } );
+}
+
 exports.fetch = fetch;
+exports.fetchGroundTruth = fetchTrend;

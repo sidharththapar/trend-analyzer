@@ -6,9 +6,11 @@ var handle = {
     "source" : "./datasource/AppController",
     "default" : "./RequestController",
     "approach" : "./RequestController",
-    "static" : "./RequestController"
+    "static" : "./RequestController",
+    "fetch_trends" : "./RequestController"
 };
 
 server.start( router.route, handle );
+
 exports.handle = handle;
 exports.staticDirectory = __dirname + '/static/';

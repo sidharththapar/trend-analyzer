@@ -52,6 +52,11 @@ function handleData( options ) {
     zModel.storeData( options );
 }
 
+function fetchTrends( options ) {
+    return zModel.trendingTopics( options );
+}
+
 exports.updateScores = updateScores;
 exports.changeConstants = changeConstants;
 exports.handleData = handleData;
+exports.fetchTrends = fetchTrends;

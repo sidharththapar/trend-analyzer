@@ -62,6 +62,35 @@ var storeData = function( options ) {
     });
 }
 
+var trendingTopics = function( options ) {
+    var tags;
+    var trends = options[ 'trends' ];
+    conn.getConnection( 'z_approach_db', function( client ) {
+	var collection  = mongodb.Collection( client, 'z_tag_collection' );
+        var iter = collection.find().sort( {
+	    'score' : -1,
+	    'variance' : -1
+	} ).limit( 10 );
+
+        iter.toArray( function ( err, data ) {
+            if ( err ) {
+		tags = [];
+            }
+            else {
+		tags = data;
+            }
+	    trends.approaches.push( {
+		'approach' : 'z',
+		'tags' : tags,
+		'time' : new Date().getTime() - options[ 'requestTime' ]
+	    } );
+	    options[ 'callbackOptions' ].trends = trends;
+	    options[ 'callback' ]( options[ 'callbackOptions' ] );
+        } );
+    } );
+}
+
 exports.upsert = upsert;
 exports.fetchAll = fetchAll;
 exports.storeData = storeData;
+exports.trendingTopics = trendingTopics;

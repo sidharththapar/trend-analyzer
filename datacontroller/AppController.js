@@ -34,6 +34,31 @@ function setCron( options ) {
 
 }
 
+function fetchTrends( options ) {
+    var approachList = options[ 'approachList' ];
+    var approach;
+    if( approachList && approachList.length ){
+	var approachName = approachList.pop();
+
+	if( ! approaches[ approachName ] )
+	    approaches[ approachName ] = approach = require( './' + approachName + 'Approach/AppController' );
+
+	else
+	    approach = approaches[ approachName ];
+
+	options[ 'approachList' ] = approachList;
+	approach.fetchTrends( {
+	    'trends' : options[ 'trends' ],
+	    'requestTime' : new Date().getTime(),
+	    'callback' : fetchTrends,
+	    'callbackOptions' : options
+	} );
+    }
+    else {
+	options[ 'callback' ]( { 'trends' : options[ 'trends' ] } );
+    }
+}
+
 function route ( segments, response, postData ) {
     switch( segments[ 2 ] ) {
 	case "constants" :
@@ -112,3 +137,4 @@ function handleData( segments, response, postData ) {
 exports.getApproachList = getApproachList;
 exports.setCron = setCron;
 exports.route = route;
+exports.fetchTrends = fetchTrends;

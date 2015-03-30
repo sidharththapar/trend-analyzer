@@ -13,6 +13,9 @@ function route( segments, response, postData ) {
 	case "static" :
 	    loadStaticView( segments, response, postData );
 	    break;
+	case "fetch_trends" :
+	    fetchTrends( segments, response, postData );
+	    break;
         default:
             mainView( segments, response, postData );
             break;
@@ -68,6 +71,32 @@ function loadStaticView( segments, response, postData ) {
 
     response.write( data );
     response.end();
+}
+
+function fetchTrends( segments, response, postData ) {
+    if ( postData ) {
+
+	var parsedData  = querystring.parse( postData );
+	var trends = {};
+	dataSource.fetchGroundTruth( {
+	    'sourceName' : parsedData[ 'sourceName' ],
+	    'trends' : trends,
+	    'requestTime' : new Date().getTime(),
+	    'callback' : function( options ) {
+		options[ 'trends' ].approaches = [];
+		dataController.fetchTrends( {
+		    'approachList' : JSON.parse( parsedData[ 'approachList' ] )[ 'list' ],
+		    'trends' : options[ 'trends' ],
+		    'callback' : function( options ) {
+			//code for frontend and template engine
+		    }
+		} );
+	    }
+	} );
+
+    }
+    else {
+    }
 }
 
 exports.route = route;
