@@ -6,7 +6,7 @@ var handle = {
     "source" : "./datasource/AppController",
     "default" : "./RequestController",
     "approach" : "./RequestController",
-    "compare" :"RequestController",
+    "compare" :"./RequestController",
     "static" : "./RequestController"
 };
 
