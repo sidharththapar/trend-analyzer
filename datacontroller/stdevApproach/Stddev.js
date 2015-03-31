@@ -3,10 +3,10 @@ var mongodb = require( 'mongodb' );
 
 var upsert = function( options ) {
 
-    conn.getConnection( 'z_approach_db', function( client ) {
+    conn.getConnection( 'stddev_approach_db', function( client ) {
 
 	var score = options[ 'score' ];
-	var collection = mongodb.Collection( client, 'z_tag_collection' );
+	var collection = mongodb.Collection( client, 'stddev_tag_collection' );
 
 	collection.update( { 'text' : score.text }, { '$set' : score }, { "upsert" : true }, function( err, numOfRows ) {
 
