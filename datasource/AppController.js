@@ -50,6 +50,18 @@ function throwData( options ) {
 
 }
 
+function fetchGroundTruth( options ) {
+    var sourceName = options[ 'sourceName' ];
+    if( ! dataSources[ sourceName ] ) {
+        dataSource = require( './' + sourceName + 'Wrapper' );
+        dataSources[ sourceName ] = dataSource;
+    }
+    else
+        dataSource = dataSources[ sourceName ];
+    return dataSource.fetchGroundTruth( options );
+
+}
+
 function route ( segments, response, postData ) {
     switch( segments[ 2 ] ) {
 	case "data_rate" :
@@ -73,3 +85,4 @@ function changeDataRate( segments, response, postData ) {
 exports.getDataSourceList = getDataSourceList;
 exports.initDataSource = initDataSource;
 exports.route = route;
+exports.fetchGroundTruth = fetchGroundTruth;
