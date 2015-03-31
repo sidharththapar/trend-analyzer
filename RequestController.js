@@ -10,9 +10,6 @@ function route( segments, response, postData ) {
         case "approach":
             singleApproachView( segments, response, postData );
             break;
-        case "compare":
-            compareApproachView( segments, response, postData );
-            break;    
 	case "static" :
 	    loadStaticView( segments, response, postData );
 	    break;
@@ -45,27 +42,6 @@ function singleApproachView( segments, response, postData ) {
 	} );
 
 	//code for frontend and template engine
-
-    }
-    else {
-    }
-}
-function compareApproachView( segments, response, postData ) {
-    if ( postData ) {
-
-    var parsedData  = querystring.parse( postData );
-
-    dataSource.initDataSource( {
-        'sourceName' : parsedData[ 'sourceName' ],
-        'dataRate' : parsedData[ 'dataRate' ]
-    } );
-
-    dataController.setCron( {
-        'approachList' : JSON.parse( parsedData[ 'approachList' ] )[ 'list' ],
-        'scoreRate' : parsedData[ 'scoreRate' ]
-    } );
-
-    //code for frontend and template engine
 
     }
     else {
