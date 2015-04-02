@@ -6,7 +6,6 @@ var handle = {
     "source" : "./datasource/AppController",
     "default" : "./RequestController",
     "approach" : "./RequestController",
-    "static" : "./RequestController"
     "static" : "./RequestController",
     "fetch_trends" : "./RequestController"
 

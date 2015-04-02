@@ -50,6 +50,7 @@ function singleApproachView( segments, response, postData ) {
     else {
     }
 }
+
 function loadStaticView( segments, response, postData ) {
 
     var filePath = index.staticDirectory + segments.slice( 2 ).join( '/' );
