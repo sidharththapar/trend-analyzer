@@ -15,6 +15,7 @@ function updateZValues( options ) {
     scores.forEach( function( score ) {
 
         if ( score['mean'] ) {
+        	
             score[ 'mean' ] = ( score.total * score.mean + score.count )/( score.total + 1 );
             score[ 'variance' ] = Math.sqrt( ( score.total * score.variance * score.variance + score.count * score.count ) / ( score.total + 1 ) );
             score[ 'total' ]++;
