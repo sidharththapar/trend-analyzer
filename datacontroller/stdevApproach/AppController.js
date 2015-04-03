@@ -16,6 +16,7 @@ function updatestddevValues( options ) {
 
         if ( score['mean'] ) {
             var oldmean=score.mean;
+            
             score[ 'mean' ] = ( score.total * score.mean + score.count )/( score.total + 1 );
             score[ 'total' ]++;
             score['std-dev'] = Math.sqrt(((score.count-score.mean) + (score.total - 1) * (oldmean - score.mean)/(score.total - 1));
@@ -29,9 +30,7 @@ function updatestddevValues( options ) {
         else {
 
             score['mean'] = score.count;
-            //score['variance'] = score.count;
             score['total'] = 1;
-            //score['z-score'] = 10000;
             score['count']=0;
 
             stddevModel.upsert( {
