@@ -8,7 +8,6 @@ var handle = {
     "approach" : "./RequestController",
     "static" : "./RequestController",
     "fetch_trends" : "./RequestController"
-
 };
 
 server.start( router.route, handle );
