@@ -19,7 +19,7 @@ function updatestddevValues( options ) {
             
             score[ 'mean' ] = ( score.total * score.mean + score.count )/( score.total + 1 );
             score[ 'total' ]++;
-            score['std-dev'] = Math.sqrt(((score.count-score.mean) + (score.total - 1) * (oldmean - score.mean)/(score.total - 1));
+            score['std-dev'] = Math.sqrt((Math.pow((score.count-score.mean),2) + Math.pow(((score.total - 1) * (oldmean - score.mean)),2)/(score.total - 1));
             score['count'] = 0;
             stddevModel.upsert( {
                 "score" : score
